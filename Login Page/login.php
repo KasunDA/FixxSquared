@@ -12,16 +12,20 @@ catch (Exception $e) {
   echo "Error: " . $e->getMessage();
 }
 
-if (isset($_POST['login']) && $_POST['login'] == 'Login') {
 // Check login
-// setup a prepared statement to read the username from the database and 
-//   compare it to the one entered on the form ($_POST)
+if (isset($_POST['login']) && $_POST['login'] == 'Login') {
+  $salt_stmt = $dbconn->prepare('SELECT salt FROM users_secure WHERE username=:username');
+  $salt_stmt->execute(array(':username' => $_POST['username']));
+  $res = $salt_stmt->fetch();
+  $salt = ($res) ? $res['salt'] : '';
+  $salted = hash('sha256', $salt . $_POST['pass']);
 
-  $login_stmt = $dbconn->prepare('SELECT username, uid FROM users WHERE username=:username AND ptpassword=:pass');
-  $login_stmt->execute(array(':username' => $_POST['username'], ':pass' => $_POST['pass']));
 
-  // if you got a match - lets set up the session
-
+  
+  $login_stmt = $dbconn->prepare('SELECT username, uid FROM users_secure WHERE username=:username AND pass=:pass');
+  $login_stmt->execute(array(':username' => $_POST['username'], ':pass' => $salted));
+  
+  
   if ($user = $login_stmt->fetch()) {
     $_SESSION['username'] = $user['username'];
     $_SESSION['uid'] = $user['uid'];
@@ -33,8 +37,6 @@ if (isset($_POST['login']) && $_POST['login'] == 'Login') {
 
 // Logout
 if (isset($_SESSION['username']) && isset($_POST['logout']) && $_POST['logout'] == 'Logout') {
-  // put your code to end the session here
-
   // Unset the keys from the superglobal
   unset($_SESSION['username']);
   unset($_SESSION['uid']);
@@ -55,13 +57,13 @@ if (isset($_SESSION['username']) && isset($_POST['logout']) && $_POST['logout'] 
 <body>
   <?php if (isset($_SESSION['username'])): ?>
   <h1>Welcome, <?php echo htmlentities($_SESSION['username']) ?></h1>
-  <form method="post" action="login_insecure.php">
+  <form method="post" action="login_secure.php">
     <input name="logout" type="submit" value="Logout" />
   </form>
   <?php else: ?>
   <h1>Login</h1>
-   <?php if (isset($err)) echo "<p>$err</p>" ?>
-  <form method="post" action="login_insecure.php">
+  <?php if (isset($err)) echo "<p>$err</p>" ?>
+  <form method="post" action="login_secure.php">
     <label for="username">Username: </label><input type="text" name="username" />
     <label for="pass">Password: </label><input type="password" name="pass" />
     <input name="login" type="submit" value="Login" />
