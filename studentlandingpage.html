@@ -82,36 +82,7 @@
         </div>
 
         <!-- Trigger/Open The Modal -->
-        <button id="myBtn2">Feedback</button>
-
-        <!-- The Modal -->
-        <div id="myModal2" class="modal">
-
-          <!-- Modal content -->
-          <div class="modal-content">
-            <div class="modal-header">
-              <span class="close2">×</span>
-              <h2>Feedback Form</h2>
-            </div>
-            <div class="modal-body">
-              <form>
-                <!-- <div class="form-group">
-                  <label for="recipient-name" class="form-control-label">Recipient:</label>
-                  <input type="text" class="form-control" id="recipient-name">
-                </div> -->
-                <div class="form-group">
-                  <label for="message-text" class="form-control-label">What did you like/dislike about your overall FixxSquared experience?</label>
-                  <textarea class="form-control" id="message-text"></textarea>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-              <button type="button" class="btn btn-primary">Submit</button>
-            </div>
-          </div>
-
-        </div>
+        <button data-toggle="modal" data-target="#ticket-feedback-modal">Feedback</button>
       </div>
 
         <!-- /.row -->
@@ -205,30 +176,57 @@
 		</div>
 	
 		<!-- New Ticket Modal -->
-    	<div id="new-ticket-modal" class="modal fade">
-				<div class="modal-dialog" role="document">
-					<!-- Modal content -->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-							<h2>Create a New Ticket</h2>
-						</div>
-						<div class="modal-body">
-							<form>
-								<div class="form-group">
-									<label for="message-text" class="form-control-label">Summary of Issue:</label>
-									<textarea class="form-control" id="message-text"></textarea>
-								</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-primary">Submit</button>
-						</div>
+		<div id="new-ticket-modal" class="modal fade">
+			<div class="modal-dialog" role="document">
+				<!-- Modal content -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h2>Create a New Ticket</h2>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="message-text" class="form-control-label">Summary of Issue:</label>
+								<textarea class="form-control" id="message-text"></textarea>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary">Submit</button>
 					</div>
 				</div>
-    	</div>
+			</div>
+		</div>
+	
+		<!-- Ticket Feedback Modal -->
+		<div id="ticket-feedback-modal" class="modal">
+			<div class="modal-dialog">
+				<!-- Modal content -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h2>Feedback Form</h2>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<label for="message-text" class="form-control-label">What did you like/dislike about your overall FixxSquared experience?</label>
+								<textarea class="form-control" id="message-text"></textarea>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+						<button type="button" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
