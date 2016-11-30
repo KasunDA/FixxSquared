@@ -17,3 +17,10 @@ input {
 .prob {
 	margin: 10px;
 }
+
+.dropdown-menu {
+	height: auto;
+	max-height: 200px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}

@@ -1,3 +1,6 @@
+<?php
+	include 'php/global.php';
+?>
 <!doctype html>
 <html>
 	<head>
@@ -41,17 +44,16 @@
 			<div class="page-header">
 				<h1>Open Tickets</h1>
 				<div class="btn-group">
-					<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Residence Hall
+					<button type="button" class="btn dropdown-toggle res-hall-filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						All Residence Halls
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">TODO</a></li>
-						<li><a class="dropdown-item" href="#">Pull res hall names </a></li>
-						<li><a class="dropdown-item" href="#">from database</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a class="dropdown-item" href="#">Also update dropdown text</a></li>
-						<li><a class="dropdown-item" href="#">with selected item</a></li>
+						<?php
+							foreach ($resHalls as $resHall) {
+								echo '<li><a class="dropdown-item" href="#" onclick="filterTicketsByHall(&quot;'.$resHall.'&quot;)">'.$resHall.'</a></li>';
+							}
+						?>
 					</ul>
 				</div>
 			</div>
