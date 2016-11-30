@@ -67,11 +67,9 @@
         </div>
         <!-- /.row -->
 
-
-    <h2>Animated Modal with Header and Footer</h2>
-
     	<!-- Trigger/Open The Modal -->
-    	<button id="myBtn">Open Modal</button>
+    	<button id="myBtn">Report a Problem (Create a New Ticket)</button>
+      <br>
 
     	<!-- The Modal -->
     	<div id="myModal" class="modal">
@@ -80,14 +78,23 @@
     	  <div class="modal-content">
     	    <div class="modal-header">
     	      <span class="close">×</span>
-    	      <h2>Modal Header</h2>
+    	      <h2>Create a New Ticket</h2>
     	    </div>
     	    <div class="modal-body">
-    	      <p>Some text in the Modal Body</p>
-    	      <p>Some other text...</p>
+            <form>
+              <!-- <div class="form-group">
+                <label for="recipient-name" class="form-control-label">Recipient:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div> -->
+              <div class="form-group">
+                <label for="message-text" class="form-control-label">Summary of Issue:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
     	    </div>
     	    <div class="modal-footer">
-    	      <h3>Modal Footer</h3>
+            <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="button" class="btn btn-primary">Submit</button>
     	    </div>
     	  </div>
 
@@ -96,7 +103,7 @@
         <!-- Projects Row -->
         <div class="row">
             <div class="col-md-6 portfolio-item">
-              <button type ="problem">Report a Problem</button>
+              <!-- <button class = "prob" type ="problem">Report a Problem</button> -->
                 <h3>
                     <a href="#">Your Currently Active Tickets</a>
                 </h3>
@@ -104,16 +111,42 @@
                 <a href="#">
                     <img class="img-responsive" src="http://placehold.it/700x400" alt="">
                 </a>
-                <h3>
-                    <a href="#">Rate Completed Tickets</a>
-                </h3>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
             </div>
         </div>
+
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn2">Feedback</button>
+
+        <!-- The Modal -->
+        <div id="myModal2" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <span class="close2">×</span>
+              <h2>Feedback Form</h2>
+            </div>
+            <div class="modal-body">
+              <form>
+                <!-- <div class="form-group">
+                  <label for="recipient-name" class="form-control-label">Recipient:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div> -->
+                <div class="form-group">
+                  <label for="message-text" class="form-control-label">What did you like/dislike about your overall FixxSquared experience?</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+              <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
         <!-- /.row -->
 
         <hr>
