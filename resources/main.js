@@ -2,6 +2,7 @@ function submitContactInfo() {
 	if (validateContactInfo()) {
 		var contactInfo = $('#update-contact-info-form').serialize();
 		console.log('contactInfo: ', contactInfo);
+		// TODO include this user's MySQL ID so we can find them in the db
 		//$.post('php/updateContactInfo.php', contactInfo);	// TODO
 	}
 }
