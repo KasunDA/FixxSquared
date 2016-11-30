@@ -5,3 +5,15 @@ body {
 input {
 	max-width: 100%;
 }
+
+#myBtn {
+	margin: 10px;
+}
+
+#myBtn2 {
+	margin: 10px;
+}
+
+.prob {
+	margin: 10px;
+}
