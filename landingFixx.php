@@ -14,6 +14,8 @@
 		<!-- Bootstrap.min.js -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script src="resources/main.js"></script>
+		<!-- Bootstrap-select.css -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
 		<link rel="stylesheet" href="resources/main.css">
 	</head>
 	<body>
@@ -73,7 +75,14 @@
 										'<h5>'.$ticket['residence_hall'].' '.$ticket['room'].'</h5>'.
 										'<strong>Request date:</strong> '.$ticket['request_date'].'<br/>'.
 										'<strong>Estimated completion time: </strong>'.$ticket['completion_time_estimated'].'<br/>'.
-										'<i>'.$ticketStatus[$ticket['status']].'</i>'.
+										'<select class="selectpicker form-control" title="'.$ticketStatus[$ticket['status']].'">';
+											foreach($ticketStatus as $status) {
+												echo '<option>'.
+														$status.
+													'</option>';
+											}
+							echo
+										'</select>'.
 									'</div>'.
 								'</div>';
 						}
@@ -82,4 +91,7 @@
 			</div>
 		</div>
 	</body>
+	
+	<!-- Bootstrap-select.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
 </html>
