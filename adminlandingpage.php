@@ -63,7 +63,7 @@ catch (Exception $e) {
 		<div class="container theme-showcase main-content" role="main">
 			<div class="jumbotron">
 				<h1>FixxSquared - Administrator</h1>
-				<p>Help campus residents! Or else!</p>
+				<p>Help us help you help us help the campus community.</p>
 			</div>
 
 			<div class="page-header">
