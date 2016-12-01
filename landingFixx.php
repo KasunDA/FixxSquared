@@ -71,7 +71,7 @@
 							echo
 								'<div class="col-md-3">'.
 									'<div class="ticket">'.
-										'<h4>#'.$ticket['ticket_id'].': '.$ticket['summary'].'</h4>'.
+										'<h4><span class="ticket-id">'.$ticket['ticket_id'].'</span>: '.$ticket['summary'].'</h4>'.
 										'<h5>'.$ticket['residence_hall'].' '.$ticket['room'].'</h5>'.
 										'<strong>Request date:</strong> '.$ticket['request_date'].'<br/>'.
 										'<strong>Estimated completion time: </strong>'.$ticket['completion_time_estimated'].'<br/>'.
@@ -94,4 +94,25 @@
 	
 	<!-- Bootstrap-select.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+	
+	<script>
+		$(document).ready(function () {
+			$('.ticket').each(function () {
+				var ticketId = $(this).find('.ticket-id').text();
+				
+				$(this).find('.selectpicker')
+				.change(function () {
+					var newStatus = $(this).find('option:selected').text();
+					
+					//console.log('ticket ' + ticketId + ' is now ' + newStatus);
+					
+					var postData = { 'ticketId': ticketId, 'newStatus': newStatus };
+					
+					$.post('php/changeTicketStatus.php', postData, function (data) {
+						console.log(data);
+					});
+				});
+			});
+		});
+	</script>
 </html>
