@@ -1,6 +1,8 @@
 <?php
 	include 'php/global.php';
 	include 'php/getTickets.php';
+
+	session_start();
 ?>
 <!doctype html>
 <html>

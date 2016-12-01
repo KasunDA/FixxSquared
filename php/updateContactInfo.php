@@ -1,12 +1,14 @@
 <?php
+	session_start();
+
 	$config = array(
 		'DB_HOST'			=> 'localhost',
 		'DB_USERNAME'	=> 'root',
 		'DB_PASSWORD' => ''
 	);
 
-	if ($_POST['updateEmail'] || $_POST['updateResHall'] || $_POST['updateRoom']) {
-		updateContactInfo($config);
+	if (isset($_POST['updateEmail']) || isset($_POST['updateResHall']) || isset($_POST['updateRoom'])) {
+		echo updateContactInfo($config);
 	}
 
 	function updateContactInfo($config) {
@@ -21,9 +23,9 @@
 				$error = "Unable to connect to database.";
 			}
 			
-			if ($_POST['updateEmail']) {
+			if (isset($_POST['updateEmail']) && $_POST['updateEmail'] != '') {
 				$statementUpdateEmail = $connection->prepare(
-					"UPDATE users
+					"UPDATE fixx_squared.users
 						SET username=:newEmail
 						WHERE uid=:userId;"
 				);
@@ -31,14 +33,14 @@
 				$statementUpdateEmail->bindParam(':newEmail', $_POST['updateEmail']);
 				$statementUpdateEmail->bindParam(':userId', $_SESSION['uid']);
 				
-				if ($statementUpdateEmail->execute() {
-					$result .= "Email address updated successfully.<br/>";
+				if ($statementUpdateEmail->execute()) {
+					$result .= "Email address updated successfully.\n";
 				};
 			}
 			
-			if ($_POST['updateResHall']) {
+			if (isset($_POST['updateResHall']) && $_POST['updateResHall'] != '') {
 				$statementUpdateResHall = $connection->prepare(
-					"UPDATE users
+					"UPDATE fixx_squared.users
 						SET residence_hall=:newResHall
 						WHERE uid=:userId;"
 				);
@@ -46,14 +48,14 @@
 				$statementUpdateResHall->bindParam(':newResHall', $_POST['updateResHall']);
 				$statementUpdateResHall->bindParam(':userId', $_SESSION['uid']);
 				
-				if ($statementUpdateResHall->execute() {
-					$result .= "Residence Hall updated successfully.<br/>";
+				if ($statementUpdateResHall->execute()) {
+					$result .= "Residence Hall updated successfully.\n";
 				};
 			}
 			
-			if ($_POST['updateRoom']) {
+			if (isset($_POST['updateRoom']) && $_POST['updateRoom'] != '') {
 				$statementUpdateRoom = $connection->prepare(
-					"UPDATE users
+					"UPDATE fixx_squared.users
 						SET room=:newRoom
 						WHERE uid=:userId;"
 				);
@@ -61,8 +63,8 @@
 				$statementUpdateRoom->bindParam(':newRoom', $_POST['updateRoom']);
 				$statementUpdateRoom->bindParam(':userId', $_SESSION['uid']);
 				
-				if ($statementUpdateRoom->execute() {
-					$result .= "Room updated successfully.<br/>";
+				if ($statementUpdateRoom->execute()) {
+					$result .= "Room updated successfully.\n";
 				};
 			}
 		}

@@ -1,5 +1,7 @@
 <?php
 	include 'php/global.php';
+	
+	session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,44 +68,42 @@
         </div>
         <!-- /.row -->
 
-    	<!-- Trigger/Open The Modal -->
-    	<button data-toggle="modal" data-target="#new-ticket-modal">Report a Problem (Create a New Ticket)</button>
-      <br>
+    	<!-- Trigger/Open New Ticket Modal -->
+			<div class="row">
+				<div class="col-md-12">
+    			<button data-toggle="modal" data-target="#new-ticket-modal" class="btn btn-primary" title="Create a New Ticket">Report a Problem</button>
+				</div>
+			</div>	
 
-        <!-- Projects Row -->
+        <!-- Active Tickets -->
         <div class="row">
             <div class="col-md-6 portfolio-item">
-              <!-- <button class = "prob" type ="problem">Report a Problem</button> -->
                 <h3>
                     <a href="#">Your Currently Active Tickets</a>
                 </h3>
-                 <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p> -->
                 <a href="#">
                     <img class="img-responsive" src="http://placehold.it/700x400" alt="">
                 </a>
             </div>
         </div>
 
-        <div class="row">
+			<!-- Completed Tickets -->
+			<div class="row">
             <div class="col-md-6 portfolio-item">
-              <!-- <button class = "prob" type ="problem">Report a Problem</button> -->
                 <h3>
                     <a href="#">Rate Completed Tickets</a>
                 </h3>
-                 <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p> -->
                 <a href="#">
                     <img class="img-responsive" src="http://placehold.it/700x400" alt="">
                 </a>
             </div>
         </div>
 
-        <!-- Trigger/Open The Modal -->
+        <!-- Trigger/Open Ticket Feedback Modal -->
         <button data-toggle="modal" data-target="#ticket-feedback-modal">Feedback</button>
       </div>
 
         <!-- /.row -->
-
-        <hr>
 
         <hr>
 
@@ -176,12 +176,12 @@
 						<form>
 							<div class="form-group">
 								<label for="summaryofissue" class="form-control-label">Summary of Issue:</label>
-								<textarea class="summaryofissue" id="message-text"></textarea>
+								<textarea class="form-control" id="new-ticket-summary"></textarea>
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button onclick="submitsummaryofissue()" type="button" class="btn btn-primary">Submit</button>
+						<button onclick="submitNewTicket()" type="button" class="btn btn-primary">Submit</button>
 					</div>
 				</div>
 			</div>
