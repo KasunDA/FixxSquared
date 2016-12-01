@@ -1,3 +1,29 @@
+<?php
+	include 'php/global.php';
+	include 'php/getTickets.php';
+
+	session_start();
+	
+	try {
+	$dbname = 'fixx_squared';
+	$user = 'root';
+	$pass = '';
+	$dbconn = new PDO('mysql:host=localhost;dbname='.$dbname, $user, $pass);
+}
+catch (Exception $e) {
+  echo "Error: " . $e->getMessage();
+}
+	
+	if (isset($_POST['delete'])) {
+		$login_stmt = $dbconn->prepare('DELETE FROM tickets WHERE ticket_id=:ticket_id');
+		$login_stmt->execute(array(':ticket_id' => $_POST['delete']) );
+		echo '<script type="text/javascript">
+			   window.location = "adminlandingpage.php"
+		  </script>';
+		
+	}
+	
+?>
 <!doctype html>
 <html>
 	<head>
@@ -39,25 +65,43 @@
 			</div>
 
 			<div class="page-header">
-				<h1>Open Tickets</h1>
+				<h1>Tickets</h1>
+<!--
 				<div class="btn-group">
-					<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Residence Hall
+					<button type="button" class="btn dropdown-toggle res-hall-filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						All Residence Halls
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">TODO</a></li>
-						<li><a class="dropdown-item" href="#">Pull res hall names </a></li>
-						<li><a class="dropdown-item" href="#">from database</a></li>
-						<li role="separator" class="divider"></li>
-						<li><a class="dropdown-item" href="#">Also update dropdown text</a></li>
-						<li><a class="dropdown-item" href="#">with selected item</a></li>
+						<?php
+							/*foreach ($resHalls as $resHall) {
+								echo '<li><a class="dropdown-item" href="#" onclick="filterTicketsByHall(&quot;'.$resHall.'&quot;)">'.$resHall.'</a></li>';
+							}*/
+						?>
 					</ul>
 				</div>
+-->
 			</div>
-
-			<div class="page-header">
-				<h1>Acknowledged Tickets</h1>
+			<div class="container">
+				<div class="row">
+					<?php
+						foreach (getTickets() as $ticket) {
+							echo
+								'<div class="col-md-3">'.
+									'<div class="ticket">'.
+										'<h4>#'.$ticket['ticket_id'].': '.$ticket['summary'].'</h4>'.
+										'<h5>'.$ticket['residence_hall'].' '.$ticket['room'].'</h5>'.
+										'<strong>Request date:</strong> '.$ticket['request_date'].'<br/>'.
+										'<strong>Estimated completion time: </strong>'.$ticket['completion_time_estimated'].'<br/>'.
+										'<i>'.$ticketStatus[$ticket['status']].'</i>'.
+										'<form method="post" action="adminlandingpage.php">
+										<button class= "btn btn-danger" name="delete" type="submit" value=" '.$ticket['ticket_id']  .'">Delete</button>
+										</form>'.
+									'</div>'.
+								'</div>';
+						}
+					?>
+				</div>
 			</div>
 		</div>
 	</body>
