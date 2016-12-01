@@ -3,7 +3,7 @@
   
   // Connect to the database
   try {
-    $dbname = 'lecture18';
+    $dbname = 'fixx_squared';
     $user = 'root';
     $pass = '';
     $dbconn = new PDO('mysql:host=localhost;dbname='.$dbname, $user, $pass);
@@ -12,7 +12,7 @@
     echo "Error: " . $e->getMessage();
   }
   
-  if (isset($_POST['register']) && $_POST['register'] == 'Register') {
+  if (isset($_POST['register'])) {
     
     // @TODO: Check to see if duplicate usernames exist FINISHED
     
@@ -26,7 +26,7 @@
     else {
 		if (isset($_POST['username']) ){
 			
-			$login_stmt = $dbconn->prepare('SELECT username FROM users_secure WHERE username=:username ');
+			$login_stmt = $dbconn->prepare('SELECT username FROM users WHERE username=:username ');
 			$login_stmt->execute(array(':username' => $_POST['username']));
 	  
 	  
@@ -41,8 +41,8 @@
 				  $salted = hash('sha256', $salt . $_POST['pass']);
 				  
 				  // Store the salt with the password, so we can apply it again and check the result
-				  $stmt = $dbconn->prepare("INSERT INTO users_secure (username, pass, salt) VALUES (:username, :pass, :salt)");
-				  $stmt->execute(array(':username' => $_POST['username'], ':pass' => $salted, ':salt' => $salt));
+				  $stmt = $dbconn->prepare("INSERT INTO users (user_type, username, pass, salt) VALUES (:user_type, :username, :pass, :salt)");
+			$stmt->execute(array(':user_type' => $_POST['register'],  ':username' => $_POST['username'], ':pass' => $salted, ':salt' => $salt));
 				  $msg = "Account created.";
 			}
 			
@@ -53,7 +53,7 @@
   
   // Check login
 if (isset($_POST['login']) && $_POST['login'] == 'Login') {
-  $salt_stmt = $dbconn->prepare('SELECT salt FROM users_secure WHERE username=:username');
+  $salt_stmt = $dbconn->prepare('SELECT salt FROM users WHERE username=:username');
   $salt_stmt->execute(array(':username' => $_POST['username']));
   $res = $salt_stmt->fetch();
   $salt = ($res) ? $res['salt'] : '';
@@ -61,16 +61,29 @@ if (isset($_POST['login']) && $_POST['login'] == 'Login') {
 
 
   
-  $login_stmt = $dbconn->prepare('SELECT username, uid FROM users_secure WHERE username=:username AND pass=:pass');
+  $login_stmt = $dbconn->prepare('SELECT username, uid, user_type FROM users WHERE username=:username AND pass=:pass');
   $login_stmt->execute(array(':username' => $_POST['username'], ':pass' => $salted));
   
   
   if ($user = $login_stmt->fetch()) {
     $_SESSION['username'] = $user['username'];
     $_SESSION['uid'] = $user['uid'];
-	echo '<script type="text/javascript">
-           window.location = "../studentlandingpage.html"
-      </script>';
+	$_SESSION['user_type'] =$user['user_type'];
+	if( $user['user_type'] == 0 ){
+		echo '<script type="text/javascript">
+			   window.location = "../studentlandingpage.php"
+		  </script>';
+	}
+	else if ($user['user_type'] == 1 ){
+		echo '<script type="text/javascript">
+			   window.location = "../landingFixx.php"
+		  </script>';
+	}
+	else {
+		echo '<script type="text/javascript">
+			   window.location = "../adminlandingpage.php"
+		  </script>';
+   }
   }
   else {
     $err = 'Incorrect username or password.';
@@ -99,7 +112,11 @@ if (isset($_POST['login']) && $_POST['login'] == 'Login') {
       <input type="text" placeholder="Email Address" name="username" />
       <input type="password" placeholder="Password" name="pass" />
       <input type="password" placeholder="Confirm Password" name="passconfirm" />
-      <button type="submit" name="register" value="Register" >create</button>
+      <button type="submit" name="register" value="1" >Create a Fixx Account</button>
+	  <br></br>
+	  <button type="submit" name="register" value="0" >Create a Student Account</button>
+	  <br></br>
+	  <button type="submit" name="register" value="2" >Create an Admin Account</button>
       <p class="message">Already registered? <a href="#">Sign In</a></p>
     </form>
     <form class="login-form" method="post" action="index.php">
@@ -111,7 +128,6 @@ if (isset($_POST['login']) && $_POST['login'] == 'Login') {
   </div>
 </div>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
       <script src="js/index.js"></script>
 
 </body>
