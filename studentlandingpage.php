@@ -60,9 +60,7 @@
 
         <!-- Page Header -->
         <div class="jumbotron">
-					<h1>
-						<h1>FixxSquared</h1>	
-					</h1>
+					<h1>FixxSquared - Student</h1>	
 					<p>Welcome, <?php echo $_SESSION['username'] ?>. Have a real conversation with Fixx!</p>
 					
 					<!-- Trigger/Open New Ticket Modal -->

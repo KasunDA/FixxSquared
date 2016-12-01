@@ -42,7 +42,7 @@
 
 		<div class="container theme-showcase main-content" role="main">
 			<div class="jumbotron">
-				<h1>FixxSquared</h1>
+				<h1>FixxSquared - Fixx User</h1>
 				<p>Welcome, <?php echo $_SESSION['username'] ?>. Help campus residents! Or else!</p>
 			</div>
 
