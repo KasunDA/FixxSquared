@@ -16,7 +16,7 @@
 		}
 		
 		try {
-			$queryString = "SELECT ticket_id, status, summary, request_date, completion_time_estimated, residence_hall, room
+			$queryString = "SELECT ticket_id, status, summary, request_date, completion_time_estimated, user_requesting_id, residence_hall, room
 				FROM fixx_squared.tickets
 				INNER JOIN fixx_squared.users
 				WHERE tickets.user_requesting_id = users.uid";
