@@ -29,7 +29,7 @@
 				);
 				
 				$statementUpdateEmail->bindParam(':newEmail', $_POST['updateEmail']);
-				$statementUpdateEmail->bindParam(':userId', ""); // TODO obtain user ID
+				$statementUpdateEmail->bindParam(':userId', $_SESSION['user_id']);
 				
 				if ($statementUpdateEmail->execute() {
 					$result .= "Email address updated successfully.<br/>";
@@ -44,7 +44,7 @@
 				);
 				
 				$statementUpdateResHall->bindParam(':newResHall', $_POST['updateResHall']);
-				$statementUpdateResHall->bindParam(':userId', ""); // TODO obtain user ID
+				$statementUpdateResHall->bindParam(':userId', $_SESSION['user_id']);
 				
 				if ($statementUpdateResHall->execute() {
 					$result .= "Residence Hall updated successfully.<br/>";
@@ -59,7 +59,7 @@
 				);
 				
 				$statementUpdateRoom->bindParam(':newRoom', $_POST['updateRoom']);
-				$statementUpdateRoom->bindParam(':userId', ""); // TODO obtain user ID
+				$statementUpdateRoom->bindParam(':userId', $_SESSION['user_id']);
 				
 				if ($statementUpdateRoom->execute() {
 					$result .= "Room updated successfully.<br/>";
