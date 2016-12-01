@@ -104,16 +104,31 @@
 			</div>	
 
 			<!-- Completed Tickets -->
-			<div class="row">
-            <div class="col-md-6 portfolio-item">
-                <h3>
-                    <a href="#">Rate Completed Tickets</a>
-                </h3>
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x400" alt="">
-                </a>
-            </div>
-        </div>
+			<div class="page-header">
+				<h2>
+					Rate Completed Tickets
+				</h2>
+			</div>
+			<div class="container">
+				<div class="row">
+					<?php					
+						foreach (getTickets() as $ticket) {
+							if ($ticket['user_requesting_id'] == $_SESSION['uid'] && $ticket['status'] == 3) {
+								echo
+									'<div class="col-md-3">'.
+										'<div class="ticket">'.
+											'<h4>#'.$ticket['ticket_id'].': '.$ticket['summary'].'</h4>'.
+											'<h5>'.$ticket['residence_hall'].' '.$ticket['room'].'</h5>'.
+											'<strong>Request date:</strong> '.$ticket['request_date'].'<br/>'.
+											'<strong>Estimated completion time: </strong>'.$ticket['completion_time_estimated'].'<br/>'.
+											'<i>'.$ticketStatus[$ticket['status']].'</i>'.
+										'</div>'.
+									'</div>';	
+							}
+						}
+					?>
+				</div>
+			</div>
 
         <!-- Trigger/Open Ticket Feedback Modal -->
         <button data-toggle="modal" data-target="#ticket-feedback-modal">Feedback</button>
