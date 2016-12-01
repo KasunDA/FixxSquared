@@ -43,7 +43,7 @@
                         <a href="#" data-toggle="modal" data-target="#update-contact-info-modal" id="toggle-contact-info-modal">Update Contact Info</a>
                     </li>
                     <li>
-                        <a href="#">Log Out</a>
+                        <a href="Login Page/logout.php">Log Out</a>
                     </li>
                 </ul>
             </div>
@@ -104,36 +104,6 @@
         <!-- /.row -->
 
         <hr>
-
-        <!-- Pagination -->
-        <!-- <div class="row text-center">
-            <div class="col-lg-12">
-                <ul class="pagination">
-                    <li>
-                        <a href="#">&laquo;</a>
-                    </li>
-                    <li class="active">
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">&raquo;</a>
-                    </li>
-                </ul>
-            </div>
-        </div> -->
-        <!-- /.row -->
 
         <hr>
 
@@ -205,13 +175,13 @@
 					<div class="modal-body">
 						<form>
 							<div class="form-group">
-								<label for="message-text" class="form-control-label">Summary of Issue:</label>
-								<textarea class="form-control" id="message-text"></textarea>
+								<label for="summaryofissue" class="form-control-label">Summary of Issue:</label>
+								<textarea class="summaryofissue" id="message-text"></textarea>
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary">Submit</button>
+						<button onclick="submitsummaryofissue()" type="button" class="btn btn-primary">Submit</button>
 					</div>
 				</div>
 			</div>

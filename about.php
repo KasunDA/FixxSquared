@@ -41,7 +41,7 @@
                         <a href="#">About</a>
                     </li>
                     <li>
-                        <a href="#">Log Out</a>
+                        <a href="Login Page/logout.php">Log Out</a>
                     </li>
                 </ul>
             </div>
