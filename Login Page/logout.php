@@ -7,9 +7,8 @@
   setcookie(session_name(), '', time() - 72000);
   // Destroy the session data store
   session_destroy();
-  $err = 'You have been logged out.';
-  session_start();
   }
+    session_start();
   // Connect to the database
   try {
     $dbname = 'fixx_squared';
@@ -20,7 +19,7 @@
   catch (Exception $e) {
     echo "Error: " . $e->getMessage();
   }
-  
+    $msg = 'You have been logged out.';
   if (isset($_POST['register'])) {
     
     // @TODO: Check to see if duplicate usernames exist FINISHED
