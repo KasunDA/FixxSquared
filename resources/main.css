@@ -28,3 +28,10 @@ input {
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
+
+.ticket {
+	background-color: #ddd;
+	border-radius: 3px;
+	padding: 5px;
+	margin: 5px;
+}

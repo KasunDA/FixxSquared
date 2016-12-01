@@ -1,5 +1,6 @@
 <?php
 	include 'php/global.php';
+	include 'php/getTickets.php';
 ?>
 <!doctype html>
 <html>
@@ -55,6 +56,24 @@
 							}
 						?>
 					</ul>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<?php
+						foreach (getTickets() as $ticket) {
+							echo
+								'<div class="col-md-3">'.
+									'<div class="ticket">'.
+										'<h4>'.$ticket['summary'].'</h4>'.
+										'<h5>'.$ticket['residence_hall'].' '.$ticket['room'].'</h5>'.
+										'<strong>Request date:</strong> '.$ticket['request_date'].'<br/>'.
+										'<strong>Estimated completion time: </strong>'.$ticket['completion_time_estimated'].'<br/>'.
+										'#'.$ticket['ticket_id'].' - <i>'.$ticketStatus[$ticket['status']].'</i>'.
+									'</div>'.
+								'</div>';
+						}
+					?>
 				</div>
 			</div>
 

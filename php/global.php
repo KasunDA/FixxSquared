@@ -22,4 +22,11 @@
 		'Stacwyck Apartments',
 		'Warren Hall'
 	);
+
+	$ticketStatus = array(
+		'Not Acknowledged',
+		'Acknowledged',
+		'Being Resolved',
+		'Closed'
+	);
 ?>
