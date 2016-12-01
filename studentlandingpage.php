@@ -1,3 +1,6 @@
+<?php
+	include 'php/global.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
