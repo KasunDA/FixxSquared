@@ -43,7 +43,8 @@
 			</div>
 
 			<div class="page-header">
-				<h1>Open Tickets</h1>
+				<h1>Tickets</h1>
+<!--
 				<div class="btn-group">
 					<button type="button" class="btn dropdown-toggle res-hall-filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						All Residence Halls
@@ -51,12 +52,13 @@
 					</button>
 					<ul class="dropdown-menu">
 						<?php
-							foreach ($resHalls as $resHall) {
+							/*foreach ($resHalls as $resHall) {
 								echo '<li><a class="dropdown-item" href="#" onclick="filterTicketsByHall(&quot;'.$resHall.'&quot;)">'.$resHall.'</a></li>';
-							}
+							}*/
 						?>
 					</ul>
 				</div>
+-->
 			</div>
 			<div class="container">
 				<div class="row">
@@ -65,20 +67,16 @@
 							echo
 								'<div class="col-md-3">'.
 									'<div class="ticket">'.
-										'<h4>'.$ticket['summary'].'</h4>'.
+										'<h4>#'.$ticket['ticket_id'].': '.$ticket['summary'].'</h4>'.
 										'<h5>'.$ticket['residence_hall'].' '.$ticket['room'].'</h5>'.
 										'<strong>Request date:</strong> '.$ticket['request_date'].'<br/>'.
 										'<strong>Estimated completion time: </strong>'.$ticket['completion_time_estimated'].'<br/>'.
-										'#'.$ticket['ticket_id'].' - <i>'.$ticketStatus[$ticket['status']].'</i>'.
+										'<i>'.$ticketStatus[$ticket['status']].'</i>'.
 									'</div>'.
 								'</div>';
 						}
 					?>
 				</div>
-			</div>
-
-			<div class="page-header">
-				<h1>Acknowledged Tickets</h1>
 			</div>
 		</div>
 	</body>
