@@ -24,12 +24,12 @@
 			if ($_POST['updateEmail']) {
 				$statementUpdateEmail = $connection->prepare(
 					"UPDATE users
-						SET email_address=:newEmail
-						WHERE user_id=:userId;"
+						SET username=:newEmail
+						WHERE uid=:userId;"
 				);
 				
 				$statementUpdateEmail->bindParam(':newEmail', $_POST['updateEmail']);
-				$statementUpdateEmail->bindParam(':userId', $_SESSION['user_id']);
+				$statementUpdateEmail->bindParam(':userId', $_SESSION['uid']);
 				
 				if ($statementUpdateEmail->execute() {
 					$result .= "Email address updated successfully.<br/>";
@@ -40,11 +40,11 @@
 				$statementUpdateResHall = $connection->prepare(
 					"UPDATE users
 						SET residence_hall=:newResHall
-						WHERE user_id=:userId;"
+						WHERE uid=:userId;"
 				);
 				
 				$statementUpdateResHall->bindParam(':newResHall', $_POST['updateResHall']);
-				$statementUpdateResHall->bindParam(':userId', $_SESSION['user_id']);
+				$statementUpdateResHall->bindParam(':userId', $_SESSION['uid']);
 				
 				if ($statementUpdateResHall->execute() {
 					$result .= "Residence Hall updated successfully.<br/>";
@@ -55,11 +55,11 @@
 				$statementUpdateRoom = $connection->prepare(
 					"UPDATE users
 						SET room=:newRoom
-						WHERE user_id=:userId;"
+						WHERE uid=:userId;"
 				);
 				
 				$statementUpdateRoom->bindParam(':newRoom', $_POST['updateRoom']);
-				$statementUpdateRoom->bindParam(':userId', $_SESSION['user_id']);
+				$statementUpdateRoom->bindParam(':userId', $_SESSION['uid']);
 				
 				if ($statementUpdateRoom->execute() {
 					$result .= "Room updated successfully.<br/>";
@@ -77,6 +77,6 @@
 			return $result;
 		}
 		
-		return "ERROR: updateEmail failed";
+		return "ERROR: updateContactInfo failed";
 	}
 ?>
