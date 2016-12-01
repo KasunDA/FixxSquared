@@ -46,7 +46,7 @@
         </div>
       </nav>
 
-        <div class = "container">
+      <div class = "container">
           <h1>About FixxSquared </h1>
           <p> FixxSquared was designed by a group of Young RPI Students in efforts (for our Web Systems Development Class) to make the process of using "Fixx" a more streamlined process
             and therefore would make RPI a better to place to stay at for those who live on campus. Feel free to contact anyone of us if you have any questions, comments, concerns
