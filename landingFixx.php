@@ -31,8 +31,8 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="#about">About</a></li>
-						<li><a href="#logout">Log Out</a></li>
+						<li><a href="about.php">About</a></li>
+						<li><a href="Login Page/logout.php">Log Out</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>

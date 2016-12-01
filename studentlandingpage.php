@@ -1,7 +1,7 @@
 <?php
 	include 'php/global.php';
 	include 'php/getTickets.php';
-	
+
 	session_start();
 ?>
 <!DOCTYPE html>
@@ -40,7 +40,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="about.php">About</a>
                     </li>
                     <li>
                         <a href="#" data-toggle="modal" data-target="#update-contact-info-modal" id="toggle-contact-info-modal">Update Contact Info</a>
@@ -74,14 +74,14 @@
 				<div class="col-md-12">
     			<button data-toggle="modal" data-target="#new-ticket-modal" class="btn btn-primary" title="Create a New Ticket">Report a Problem</button>
 				</div>
-			</div>	
+			</div>
 
         <!-- Active Tickets -->
 			<div class="page-header">
 				<h2>
 					Your Currently Active Tickets
 				</h2>
-			</div>  
+			</div>
 			<div class="container">
 				<div class="row">
 					<?php
@@ -96,12 +96,12 @@
 											'<strong>Estimated completion time: </strong>'.$ticket['completion_time_estimated'].'<br/>'.
 											'<i>'.$ticketStatus[$ticket['status']].'</i>'.
 										'</div>'.
-									'</div>';	
+									'</div>';
 							}
 						}
 					?>
 				</div>
-			</div>	
+			</div>
 
 			<!-- Completed Tickets -->
 			<div class="row">
