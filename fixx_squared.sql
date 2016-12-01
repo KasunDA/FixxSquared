@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 02, 2016 at 05:57 PM
+-- Host: 127.0.0.1
+-- Generation Time: Dec 01, 2016 at 01:49 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `fixx_squared`
+-- Database: `fixx__squared`
 --
 
 -- --------------------------------------------------------
@@ -39,6 +39,24 @@ CREATE TABLE `tickets` (
   `feedback_comment` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tickets`
+--
+
+INSERT INTO `tickets` (`ticket_id`, `user_requesting_id`, `user_completing_id`, `status`, `summary`, `request_date`, `completion_time_estimated`, `completion_time_actual`, `feedback_rating`, `feedback_comment`) VALUES
+(1, 1, 3, 3, 'Men''s Bathroom Sink Leaking', '2016-11-29 17:33:26', '48:00:00', '08:30:00', 8, 'Sink fixed very quickly'),
+(2, 1, 3, 1, 'Common Area Couch Leg Broken', '2016-11-29 17:33:26', '48:00:00', '00:00:00', 5, NULL),
+(3, 1, 4, 1, 'Hole in Wall', '2016-11-29 17:33:26', '48:00:00', '00:00:00', 5, NULL),
+(4, 1, 4, 2, 'Heat in my room too high', '2016-11-29 17:33:26', '48:00:00', '00:00:00', 5, NULL),
+(5, 1, NULL, 0, 'Window won''t close', '2016-11-29 17:33:26', '48:00:00', '00:00:00', 5, NULL),
+(6, 1, NULL, 0, 'Room Key broke off in door', '2016-11-29 17:33:26', '48:00:00', '00:00:00', 5, NULL),
+(7, 2, 3, 1, 'Toilet clogged in women''s bathroom', '2016-11-29 17:33:26', '48:00:00', '00:00:00', 5, NULL),
+(8, 2, 3, 2, 'Too cold in my room', '2016-11-29 17:33:26', '48:00:00', '00:00:00', 5, NULL),
+(9, 2, 4, 1, 'Window won''t open', '2016-11-29 17:33:26', '48:00:00', '00:00:00', 5, NULL),
+(10, 2, 4, 3, 'Vending machine eating money', '2016-11-29 17:33:26', '48:00:00', '23:00:00', 2, 'Waited very long for this fix'),
+(11, 2, NULL, 0, 'Ceiling tile missing', '2016-11-29 17:33:26', '48:00:00', '00:00:00', 5, NULL),
+(12, 2, NULL, 0, 'Urinal flooding bathroom', '2016-11-29 17:33:26', '48:00:00', '00:00:00', 5, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -54,6 +72,18 @@ CREATE TABLE `users` (
   `residence_hall` varchar(20) DEFAULT NULL,
   `room` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_type`, `email_address`, `password_hash`, `password_salt`, `residence_hall`, `room`) VALUES
+(1, 0, 'student1@rpi.edu', '8af0aa2189db20757ba75cc6e8fcb38aff5e80db', 'morton', 'Barton', '225'),
+(2, 0, 'student2@rpi.edu', 'f740beb143c8d23a3ee1640b2f09326fa8c948a6', 'morton', 'Hall', '104'),
+(3, 1, 'fixx1@rpi.edu', '0c25c664a1342c193ddf7302c28e12ad9550c36a', 'kosher', NULL, NULL),
+(4, 1, 'fixx2@rpi.edu', '7556246a880d901b5de0909b08c5d35db3372712', 'kosher', NULL, NULL),
+(5, 2, 'admin1@rpi.edu', '1541fe22c1aab08910015f2c5c55d67e933e3c94', 'sea', NULL, NULL),
+(6, 2, 'admin2@rpi.edu', '31eb34563c686ad36ae5cf2e930967bb8b8217aa', 'sea', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -81,12 +111,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --
