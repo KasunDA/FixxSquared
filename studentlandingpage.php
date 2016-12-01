@@ -86,7 +86,7 @@
 				<div class="row">
 					<?php
 						foreach (getTickets() as $ticket) {
-							if ($ticket['user_requesting_id'] == $_SESSION['uid']) {
+							if ($ticket['user_requesting_id'] == $_SESSION['uid'] && $ticket['status'] != 3) {
 								echo
 									'<div class="col-md-3">'.
 										'<div class="ticket">'.
@@ -94,7 +94,7 @@
 											'<h5>'.$ticket['residence_hall'].' '.$ticket['room'].'</h5>'.
 											'<strong>Request date:</strong> '.$ticket['request_date'].'<br/>'.
 											'<strong>Estimated completion time: </strong>'.$ticket['completion_time_estimated'].'<br/>'.
-											'<i>'.$ticketStatus[$ticket['status']].'</i>'.
+											'<button disabled class="btn">'.$ticketStatus[$ticket['status']].'</button>'.
 										'</div>'.
 									'</div>';
 							}
@@ -120,8 +120,11 @@
 											'<h4>#'.$ticket['ticket_id'].': '.$ticket['summary'].'</h4>'.
 											'<h5>'.$ticket['residence_hall'].' '.$ticket['room'].'</h5>'.
 											'<strong>Request date:</strong> '.$ticket['request_date'].'<br/>'.
-											'<strong>Estimated completion time: </strong>'.$ticket['completion_time_estimated'].'<br/>'.
-											'<i>'.$ticketStatus[$ticket['status']].'</i>'.
+											'<strong>Estimated completion time: </strong>'.$ticket['completion_time_estimated'].
+											'<div class="btn-group">'.
+												'<button disabled class="btn">'.$ticketStatus[$ticket['status']].'</button>'.
+												'<button data-toggle="modal" data-target="#ticket-feedback-modal" class="btn btn-info">Feedback</button>'.
+											'</div>'.
 										'</div>'.
 									'</div>';	
 							}
@@ -129,9 +132,6 @@
 					?>
 				</div>
 			</div>
-
-        <!-- Trigger/Open Ticket Feedback Modal -->
-        <button data-toggle="modal" data-target="#ticket-feedback-modal">Feedback</button>
       </div>
 
         <!-- /.row -->
@@ -140,12 +140,14 @@
 
         <!-- Footer -->
         <footer>
+					<div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; FixxSquared 2016</p>
                 </div>
             </div>
             <!-- /.row -->
+					</div>
         </footer>
 
     </div>
