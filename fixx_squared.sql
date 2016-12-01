@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2016 at 01:49 AM
+-- Generation Time: Dec 01, 2016 at 02:47 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `fixx__squared`
+-- Database: `fixxed_squared`
 --
 
 -- --------------------------------------------------------
@@ -64,11 +64,11 @@ INSERT INTO `tickets` (`ticket_id`, `user_requesting_id`, `user_completing_id`, 
 --
 
 CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
   `user_type` int(11) NOT NULL DEFAULT '0' COMMENT '0 = student, 1 = Fixx, 2 = admin',
-  `email_address` varchar(30) NOT NULL,
-  `password_hash` varchar(255) NOT NULL,
-  `password_salt` varchar(255) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `salt` varchar(255) NOT NULL,
   `residence_hall` varchar(20) DEFAULT NULL,
   `room` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -77,7 +77,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_type`, `email_address`, `password_hash`, `password_salt`, `residence_hall`, `room`) VALUES
+INSERT INTO `users` (`uid`, `user_type`, `username`, `pass`, `salt`, `residence_hall`, `room`) VALUES
 (1, 0, 'student1@rpi.edu', '8af0aa2189db20757ba75cc6e8fcb38aff5e80db', 'morton', 'Barton', '225'),
 (2, 0, 'student2@rpi.edu', 'f740beb143c8d23a3ee1640b2f09326fa8c948a6', 'morton', 'Hall', '104'),
 (3, 1, 'fixx1@rpi.edu', '0c25c664a1342c193ddf7302c28e12ad9550c36a', 'kosher', NULL, NULL),
@@ -101,7 +101,7 @@ ALTER TABLE `tickets`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`uid`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -116,7 +116,7 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --
@@ -125,8 +125,8 @@ ALTER TABLE `users`
 -- Constraints for table `tickets`
 --
 ALTER TABLE `tickets`
-  ADD CONSTRAINT `user_completing_ticket` FOREIGN KEY (`user_completing_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `user_requesting_ticket` FOREIGN KEY (`user_requesting_id`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `user_completing_ticket` FOREIGN KEY (`user_completing_id`) REFERENCES `users` (`uid`),
+  ADD CONSTRAINT `user_requesting_ticket` FOREIGN KEY (`user_requesting_id`) REFERENCES `users` (`uid`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
