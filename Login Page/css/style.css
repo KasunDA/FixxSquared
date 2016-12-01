@@ -11,7 +11,7 @@
   background: #FFFFFF;
   max-width: 360px;
   margin: 0 auto 100px;
-  padding: 45px;
+  padding: 10px 45px 45px 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -89,12 +89,15 @@
   color: #EF3B3A;
 }
 body {
-  background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
+	background: url(../../resources/quad.jpg);
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
+}
+footer {
+	padding-top: 10px;
+	text-align: center;
 }

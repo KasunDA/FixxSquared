@@ -1,5 +1,9 @@
 body {
 	padding-top: 70px;
+	background: url(quad.jpg);
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
 input, textarea {
@@ -34,5 +38,20 @@ input, textarea {
 	border-radius: 3px;
 	padding: 5px;
 	margin: 5px;
+	text-align: center;
+}
+
+.main-content {
+	background-color: rgba(255, 255, 255, 0.9);
+	border-radius: 5px;
+	padding: 20px;
+}
+
+.jumbotron {
+	background-color: #98abe1;
+}
+
+footer {
+	padding-top: 10px;
 	text-align: center;
 }

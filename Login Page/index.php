@@ -104,10 +104,10 @@ if (isset($_POST['login']) && $_POST['login'] == 'Login') {
 
 <body>
   <div class="login-page">
-  <h1><center>FixxSquared</center></h1>
-  <?php if (isset($err)) echo "<p>$err</p>" ?>
-    <?php if (isset($msg)) echo "<p>$msg</p>" ?>
   <div class="form">
+		<h1><center>FixxSquared</center></h1>
+			<?php if (isset($err)) echo "<p>$err</p>" ?>
+				<?php if (isset($msg)) echo "<p>$msg</p>" ?>
     <form class="register-form" method="post" action="index.php">
       <input type="text" placeholder="Email Address" name="username" />
       <input type="password" placeholder="Password" name="pass" />

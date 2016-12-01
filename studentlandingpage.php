@@ -56,25 +56,19 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container main-content">
 
         <!-- Page Header -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    <small>Have a real conversation with Fixx</small>
-
-                </h1>
-            </div>
+        <div class="jumbotron">
+					<h1>
+						<h1>FixxSquared</h1>	
+					</h1>
+					<p>Welcome, <?php echo $_SESSION['username'] ?>. Have a real conversation with Fixx!</p>
+					
+					<!-- Trigger/Open New Ticket Modal -->
+					<button data-toggle="modal" data-target="#new-ticket-modal" class="btn btn-primary" title="Create a New Ticket">Report a Problem</button>
         </div>
         <!-- /.row -->
-
-    	<!-- Trigger/Open New Ticket Modal -->
-			<div class="row">
-				<div class="col-md-12">
-    			<button data-toggle="modal" data-target="#new-ticket-modal" class="btn btn-primary" title="Create a New Ticket">Report a Problem</button>
-				</div>
-			</div>
 
         <!-- Active Tickets -->
 			<div class="page-header">
@@ -132,13 +126,8 @@
 					?>
 				</div>
 			</div>
-      </div>
-
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Footer -->
+			
+			<!-- Footer -->
         <footer>
 					<div class="container">
             <div class="row">
@@ -149,6 +138,9 @@
             <!-- /.row -->
 					</div>
         </footer>
+      </div>
+
+        <!-- /.row -->
 
     </div>
     <!-- /.container -->

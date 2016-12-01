@@ -40,10 +40,10 @@
 			</div>
 		</nav>
 
-		<div class="container theme-showcase" role="main">
+		<div class="container theme-showcase main-content" role="main">
 			<div class="jumbotron">
 				<h1>FixxSquared</h1>
-				<p>Help campus residents! Or else!</p>
+				<p>Welcome, <?php echo $_SESSION['username'] ?>. Help campus residents! Or else!</p>
 			</div>
 
 			<div class="page-header">
@@ -64,7 +64,7 @@
 				</div>
 -->
 			</div>
-			<div class="container">
+			<div class="container row">
 				<div class="row">
 					<?php
 						foreach (getTickets() as $ticket) {
@@ -89,6 +89,18 @@
 					?>
 				</div>
 			</div>
+			
+			<!-- Footer -->
+        <footer>
+					<div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; FixxSquared 2016</p>
+                </div>
+            </div>
+            <!-- /.row -->
+					</div>
+        </footer>
 		</div>
 	</body>
 	
