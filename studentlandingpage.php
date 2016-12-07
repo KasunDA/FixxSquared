@@ -223,21 +223,21 @@
 						<h2>Feedback: Ticket #<span id="feedback-ticket-id"></span></h2>
 					</div>
 					<div class="modal-body">
-						<form>
+						<form id="ticket-feedback-form" role="form">
 							<div class="form-group">
 								<label>Please rate the quality of this fix. (1 - Poor, 5 - Excellent)</label>
 								<div id="feedback-slider"></div>
-								<input type="text" readonly id="feedback-rating"/>
+								<input type="text" readonly id="feedback-rating" name="feedback-rating"/>
 							</div>
 							<div class="form-group">
 								<label for="message-text" class="form-control-label">Comments</label>
-								<textarea class="form-control" id="message-text"></textarea>
+								<textarea class="form-control" id="feedback-comments" name="feedback-comments"></textarea>
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
 						<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-						<button type="button" class="btn btn-primary">Submit</button>
+						<button onclick="submitTicketFeedback()" type="button" class="btn btn-primary">Submit</button>
 					</div>
 				</div>
 			</div>
@@ -247,7 +247,6 @@
 	<script>
 		$(document).on('click', '.open-feedback-modal-button', function() {
 			var myTicketId = $(this).data('id');
-			console.log('myTicketId:', myTicketId);
 			$('.modal-header #feedback-ticket-id').text(myTicketId);
 		});
 		

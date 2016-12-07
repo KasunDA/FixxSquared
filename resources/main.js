@@ -54,3 +54,13 @@ function submitNewTicket() {
 		});
 	}
 }
+
+function submitTicketFeedback() {
+	var ticketFeedback = $('#ticket-feedback-form').serialize() + '&feedback-ticket-id=' + $('#feedback-ticket-id').text();
+	
+	console.log('ticketFeedback', ticketFeedback);
+	
+	$.post('php/submitTicketFeedback.php', ticketFeedback, function (data) {
+		alert(data);
+	});
+}

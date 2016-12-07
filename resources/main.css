@@ -69,3 +69,7 @@ footer {
 #feedback-slider .ui-slider-range {
 	background: #98abe1;
 }
+
+input.feedback-ticket-id {
+	display: none;
+}
