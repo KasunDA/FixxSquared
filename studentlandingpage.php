@@ -19,6 +19,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link href="resources/main.css" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -115,7 +116,7 @@
 											'<strong>Estimated completion time: </strong>'.$ticket['completion_time_estimated'].
 											'<div class="btn-group">'.
 												'<button disabled class="btn">'.$ticketStatus[$ticket['status']].'</button>'.
-												'<button data-toggle="modal" data-target="#ticket-feedback-modal" class="btn btn-info">Feedback</button>'.
+												'<button data-toggle="modal" data-target="#ticket-feedback-modal" data-id="'.$ticket['ticket_id'].'" class="btn btn-info open-feedback-modal-button">Feedback</button>'.
 											'</div>'.
 										'</div>'.
 									'</div>';	
@@ -219,12 +220,17 @@
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h2>Feedback Form</h2>
+						<h2>Feedback: Ticket #<span id="feedback-ticket-id"></span></h2>
 					</div>
 					<div class="modal-body">
 						<form>
 							<div class="form-group">
-								<label for="message-text" class="form-control-label">What did you like/dislike about your overall FixxSquared experience?</label>
+								<label>Please rate the quality of this fix. (1 - Poor, 5 - Excellent)</label>
+								<div id="feedback-slider"></div>
+								<input type="text" readonly id="feedback-rating"/>
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="form-control-label">Comments</label>
 								<textarea class="form-control" id="message-text"></textarea>
 							</div>
 						</form>
@@ -238,10 +244,31 @@
 		</div>
 	</body>
 
+	<script>
+		$(document).on('click', '.open-feedback-modal-button', function() {
+			var myTicketId = $(this).data('id');
+			console.log('myTicketId:', myTicketId);
+			$('.modal-header #feedback-ticket-id').text(myTicketId);
+		});
+		
+		$(function() {
+			$('#feedback-slider').slider({
+				value: 5,
+				min: 1,
+				max: 5,
+				step: 1,
+				slide: function(event, ui) {
+					$('#feedback-rating').val(ui.value);
+				}
+			});
+			$('#feedback-rating').val($('#feedback-slider').slider('value'));
+		});
+	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<!-- Bootstrap.min.js -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="resources/main.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </body>
 
 </html>

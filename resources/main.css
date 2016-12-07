@@ -60,3 +60,12 @@ footer {
 	padding-top: 10px;
 	text-align: center;
 }
+
+#feedback-rating {
+	border: none;
+	font-weight: bolder;
+}
+
+#feedback-slider .ui-slider-range {
+	background: #98abe1;
+}
