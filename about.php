@@ -51,8 +51,9 @@
 
       <div class = "container main-content">
           <h1>About FixxSquared </h1>
-          <p> FixxSquared was designed by a group of Young RPI Students in efforts (for our Web Systems Development Class) to make the process of using "Fixx" a more streamlined process
-            and therefore would make RPI a better to place to stay at for those who live on campus. Feel free to contact anyone of us if you have any questions, comments, concerns
+          <p> FixxSquared was designed by a group of young RPI students in order to make the process of using "Fixx" more streamlined
+						and therefore would make RPI a better to place to stay at for those who live on campus.
+						Feel free to contact anyone of us if you have any questions, comments, concerns
             or would just like to send a friendly email! Positive feedback is always appreciated! </p>
             <div class = "profiles">
               <a href="mailto:somebody@rpi.edu"><img src="resources/Adeel.jpg" class="rounded float-xs-left" alt="..." height="300" width=auto></a>
@@ -64,19 +65,15 @@
               <a href="mailto:somebody@rpi.edu"><img src="resources/Vince.jpg" class="rounded mx-auto d-block" alt="..."  height="300" width=auto></a>
             </div>
 				<!-- Footer -->
-        <footer>
-					<div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; FixxSquared 2016</p>
-                </div>
-            </div>
-            <!-- /.row -->
-					</div>
-        </footer>
-          </div>
-
-
-          </div>
-        <!-- /.container -->
-    </nav>
+	        <footer>
+						<div class="container">
+	            <div class="row">
+	                <div class="col-lg-12">
+	                    <p>Copyright &copy; FixxSquared 2016</p>
+	                </div>
+	            </div>
+						</div>
+	        </footer>
+	      </div>
+		</body>
+	</html>
