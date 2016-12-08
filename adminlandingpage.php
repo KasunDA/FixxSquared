@@ -3,7 +3,7 @@
 	include 'php/getTickets.php';
 
 	session_start();
-	
+
 	try {
 	$dbname = 'fixx_squared';
 	$user = 'root';
@@ -13,16 +13,16 @@
 catch (Exception $e) {
   echo "Error: " . $e->getMessage();
 }
-	
+
 	if (isset($_POST['delete'])) {
 		$login_stmt = $dbconn->prepare('DELETE FROM tickets WHERE ticket_id=:ticket_id');
 		$login_stmt->execute(array(':ticket_id' => $_POST['delete']) );
 		echo '<script type="text/javascript">
 			   window.location = "adminlandingpage.php"
 		  </script>';
-		
+
 	}
-	
+
 ?>
 <!doctype html>
 <html>
@@ -34,6 +34,7 @@ catch (Exception $e) {
 		<!-- Bootstrap.min.js -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script src="resources/main.js"></script>
+		<link rel="shortcut icon" href="resources/FixxFavicon.png" />
 		<!-- Bootstrap-select.css -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
 		<link rel="stylesheet" href="resources/main.css">
@@ -113,23 +114,23 @@ catch (Exception $e) {
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Bootstrap-select.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
-	
+
 	<script>
 		$(document).ready(function () {
 			$('.ticket').each(function () {
 				var ticketId = $(this).find('.ticket-id').text();
-				
+
 				$(this).find('.selectpicker')
 				.change(function () {
 					var newStatus = $(this).find('option:selected').text();
-					
+
 					//console.log('ticket ' + ticketId + ' is now ' + newStatus);
-					
+
 					var postData = { 'ticketId': ticketId, 'newStatus': newStatus };
-					
+
 					$.post('php/changeTicketStatus.php', postData, function (data) {
 						console.log(data);
 					});

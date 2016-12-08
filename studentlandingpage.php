@@ -16,6 +16,7 @@
 
     <title>FixxSquared - Student Landing</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<link rel="shortcut icon" href="resources/FixxFavicon.png" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link href="resources/main.css" rel="stylesheet" type="text/css"/>
@@ -61,9 +62,9 @@
 
         <!-- Page Header -->
         <div class="jumbotron">
-					<h1>FixxSquared - Student</h1>	
+					<h1>FixxSquared - Student</h1>
 					<p>Welcome, <?php echo $_SESSION['username'] ?>. Have a real conversation with Fixx!</p>
-					
+
 					<!-- Trigger/Open New Ticket Modal -->
 					<button data-toggle="modal" data-target="#new-ticket-modal" class="btn btn-primary" title="Create a New Ticket">Report a Problem</button>
         </div>
@@ -104,7 +105,7 @@
 			</div>
 			<div class="container">
 				<div class="row">
-					<?php					
+					<?php
 						foreach (getTickets() as $ticket) {
 							if ($ticket['user_requesting_id'] == $_SESSION['uid'] && $ticket['status'] == 3) {
 								echo
@@ -119,13 +120,13 @@
 												'<button data-toggle="modal" data-target="#ticket-feedback-modal" data-id="'.$ticket['ticket_id'].'" class="btn btn-info open-feedback-modal-button">Feedback</button>'.
 											'</div>'.
 										'</div>'.
-									'</div>';	
+									'</div>';
 							}
 						}
 					?>
 				</div>
 			</div>
-			
+
 			<!-- Footer -->
         <footer>
 					<div class="container">
@@ -249,7 +250,7 @@
 			var myTicketId = $(this).data('id');
 			$('.modal-header #feedback-ticket-id').text(myTicketId);
 		});
-		
+
 		$(function() {
 			$('#feedback-slider').slider({
 				value: 5,

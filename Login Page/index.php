@@ -1,6 +1,6 @@
 <?php
   session_start();
-  
+
   // Connect to the database
   try {
     $dbname = 'fixx_squared';
@@ -11,12 +11,12 @@
   catch (Exception $e) {
     echo "Error: " . $e->getMessage();
   }
-  
+
   if (isset($_POST['register'])) {
-    
+
     // @TODO: Check to see if duplicate usernames exist FINISHED
-    
-	
+
+
     if (!isset($_POST['username']) || !isset($_POST['pass']) || !isset($_POST['passconfirm']) || empty($_POST['username']) || empty($_POST['pass']) || empty($_POST['passconfirm'])) {
       $msg = "Please fill in all form fields.";
     }
@@ -25,32 +25,32 @@
     }
     else {
 		if (isset($_POST['username']) ){
-			
+
 			$login_stmt = $dbconn->prepare('SELECT username FROM users WHERE username=:username ');
 			$login_stmt->execute(array(':username' => $_POST['username']));
-	  
-	  
+
+
 			if ($_POST['username'] == $login_stmt->fetch()) {
 			$msg = "Username Taken";
 			}
 			else {
 				// Generate random salt
-				  $salt = hash('sha256', uniqid(mt_rand(), true));      
+				  $salt = hash('sha256', uniqid(mt_rand(), true));
 
 				  // Apply salt before hashing
 				  $salted = hash('sha256', $salt . $_POST['pass']);
-				  
+
 				  // Store the salt with the password, so we can apply it again and check the result
 				  $stmt = $dbconn->prepare("INSERT INTO users (user_type, username, pass, salt) VALUES (:user_type, :username, :pass, :salt)");
 			$stmt->execute(array(':user_type' => $_POST['register'],  ':username' => $_POST['username'], ':pass' => $salted, ':salt' => $salt));
 				  $msg = "Account created.";
 			}
-			
+
 		}
 
     }
-  } 
-  
+  }
+
   // Check login
 if (isset($_POST['login']) && $_POST['login'] == 'Login') {
   $salt_stmt = $dbconn->prepare('SELECT salt FROM users WHERE username=:username');
@@ -60,11 +60,11 @@ if (isset($_POST['login']) && $_POST['login'] == 'Login') {
   $salted = hash('sha256', $salt . $_POST['pass']);
 
 
-  
+
   $login_stmt = $dbconn->prepare('SELECT username, uid, user_type FROM users WHERE username=:username AND pass=:pass');
   $login_stmt->execute(array(':username' => $_POST['username'], ':pass' => $salted));
-  
-  
+
+
   if ($user = $login_stmt->fetch()) {
     $_SESSION['username'] = $user['username'];
     $_SESSION['uid'] = $user['uid'];
@@ -100,6 +100,7 @@ if (isset($_POST['login']) && $_POST['login'] == 'Login') {
   <meta charset="UTF-8">
   <title>FixxSquared - Login Form</title>
       <link rel="stylesheet" href="css/style.css">
+      <link rel="shortcut icon" href="../resources/FixxFavicon.png" />
 </head>
 
 <body>
